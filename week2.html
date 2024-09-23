@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="study master in scotlad, best university in paisley">
+    <!-- <link rel="stylesheet" href="css/table.css"> -->
+    <title>Tables and Form</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+<body>
+
+    <p>Ben Spiers</p>
+    <p>Student Number: 01740770 </p>
+    
+    <!-- table with border and colour -->
+    <table border="2" bordercolor="black">
+        <th><b>Table</b></th>
+        <!-- table row and data headings -->
+        <tr> 
+            <td>Links</td> 
+            <td>Shapes</td> 
+            <td>Iframe</td>
+            <td>Contact Links</td> 
+        </tr>
+        <!-- table row and data -->
+        <tr> 
+            <td><a href="https://www.google.co.uk/" class="underline">Google</a></td> 
+            <td><img src="images/pentagon.png" alt="pentagon shape" usemap="#image-pent"></td> 
+            <td><iframe width="560" height="315" src="https://www.youtube.com/embed/Bpaf6Dm9iRc?si=yu8iOfdlP_0Q5bgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td> 
+            <td>Email: <a href="emailplaceholder">User</a>
+                Address: 123 Neverland
+            </td> 
+        </tr>
+<!-- table row and data -->
+        <tr> 
+            <td><a href="https://www.uws.ac.uk/" class="underline">UWS</a></td> 
+            <td><img src="images/square.png" alt="square" usemap="#image-square"></td> 
+            <td><iframe width="560" height="315" src="https://www.youtube.com/embed/Bpaf6Dm9iRc?si=yu8iOfdlP_0Q5bgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>   
+            <td>Email: <a href="emailplaceholder">User</a>
+                Address: 123 Neverland
+            </td>   
+        </tr>
+
+        <!-- table row and data -->
+        <tr> 
+            <td><a href="https://www.bbc.com/news" class="underline">BBC</a></td> 
+            <td><img src="images/triangle.png" alt="triangle shape" usemap="#image-tri"></td> 
+            <td><iframe width="560" height="315" src="https://www.youtube.com/embed/Bpaf6Dm9iRc?si=yu8iOfdlP_0Q5bgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>  
+            <td>Email: <a href="emailplaceholder">User</a>
+                Address: 123 Neverland
+            </td>  
+        </tr>
+    </table>
+
+    <!-- Maps for images in table -->
+    <map name="image-pent">
+        <area target="_parent" alt="pentagon" title="pentagon" href="shapes/pentagon.html" coords="128,0,2,94,50,239,207,239,256,94" shape="poly">
+    </map>
+
+    <map name="image-tri">
+        <area target="_parent" alt="triangle" title="triangle" href="shapes/triangle.html" coords="128,19,3,235,252,234" shape="poly">
+    </map>
+
+    <map name="image-square">
+        <area target="_parent" alt="square" title="square" href="shapes/rectangle.html" coords="1,1,224,223" shape="rect">
+    </map>
+
+    <br>
+
+
+    <!-- Form section -->
+    <h2>Form here:</h2>
+
+    <!-- form -->
+    <form method="post" enctype="text/plain" action="?">
+
+        <!-- Personal info -->
+        <fieldset>
+        <legend> Personal Info</legend>
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" placeholder="Enter your first name"><br>
+        </fieldset>
+        <br>
+
+        <!-- Feedback section -->
+        <fieldset>
+        <legend> Feedback</legend>
+        <label for="feedback">Your Feedback:</label><br>
+        <textarea name="feedback" rows="10"
+        cols="30" placeholder="Provide your feedback here"> </textarea>
+        </fieldset><br>
+
+        <!-- Agreement section -->
+        <fieldset>
+        <legend> Agreement</legend>
+        <label for="agreement">Do you agre with us?</label><br>
+        <input type="checkbox" name="purchase" value="yes">Yes<br>
+        <input type="checkbox" name="purchase" value="no">No<br>
+        </fieldset>
+        <br>
+
+        <!-- Location section -->
+        <fieldset>
+            <legend>Location</legend>
+            <label for="list">Where are you based?</label><br>
+            <select name="list" size="1" tabindex="3">
+                <option value="Paisley">Paisley</option>
+                <option value="Glasgow">Glasgow</option>
+                <option value="Nowhere Land">Nowhere Land</option>
+            </select>
+        </fieldset>
+
+        <!-- Job infortamion section -->
+        <fieldset>
+            <legend>Job Information</legend>
+            <label for="source">Selected your job</label><br>
+        <input type="radio" name="source" value="Developer"> Developer <br>
+        <input type="radio" name="source" value="Designer"> Designer <br>
+        <input type="radio" name="source" value="Nurse"> Nurse <br>
+        </fieldset>
+
+        <!-- Event datesection  -->
+        <fieldset>
+            <legend>Event Date</legend>
+            <label for="event">Select a date for your feedback submission:</label><br>
+            <input type="date" name="date">
+        </fieldset>
+
+        <!-- File upload section -->
+        <fieldset>
+            <legend>File Upload</legend>
+            <label for="upload">Upload your file here:</label><br>
+            <input type="file" name="file" id="">
+        </fieldset><br>
+
+    <!-- Submit and rest buttons -->
+    <input type="submit" value="Submit">
+    <input type="submit" value="Reset">
+
+    </fieldset>
+    </form>
+
+</body>
+</html>
