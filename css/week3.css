@@ -27,6 +27,21 @@ header img {
     z-index: -1;
 }
 
+/* Header Text  css Animation */
+.header-text {
+    opacity: 0; 
+    transform: translateY(20px); 
+    animation: fadeInUp 1s forwards; 
+    animation-delay: 0.25s; /
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1; 
+        transform: translateY(0); /* Move to original position */
+    }
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -117,7 +132,7 @@ nav .nav-links a {
     line-height: 1.6;
 }
 
-/* Footer */
+/* Footer and footer icons */
 footer {
     background-color: #e0f7e0; 
     padding: 20px 0; 
