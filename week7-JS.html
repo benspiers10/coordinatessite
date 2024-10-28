@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/week6.css">
+    <title>Array Persons and grades</title>
+</head>
+<body>
+
+    <h1>Grade Comparison</h1>
+    
+    <form id="personForm">
+        <h3>Enter details for 4 people</h3>
+        <label>Name:</label>
+        <input type="text" id="name" required>
+        <br>
+        <label>Grade:</label>
+        <input type="number" id="grade" min="0" max="100" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Entered Persons:</h2>
+    <div id="personList"></div>
+    
+    <h2>Comparison Results:</h2>
+    <div id="output"></div>
+
+    <script>
+        class Person {
+            constructor(name, grade) {
+                this.name = name;
+                this.grade = grade;
+            }
+        }
+
+        const persons = [];
+
+        document.getElementById("personForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            const nameInput = document.getElementById("name");
+            const gradeInput = document.getElementById("grade");
+
+            const name = nameInput.value; 
+            const grade = parseInt(gradeInput.value); 
+            
+            persons.push(new Person(name, grade));
+
+            // Reset input fields
+            nameInput.value = '';
+            gradeInput.value = '';
+
+            displayPersons();
+
+            // Check if we have 4 entries
+            if (persons.length === 4) {
+                displayResults();
+            }
+        });
+
+        function displayPersons() {
+            const personListDiv = document.getElementById("personList");
+            personListDiv.innerHTML = ''; // Clear previous list
+            
+            persons.forEach((person, index) => {
+                personListDiv.innerHTML += `<p>${index + 1}. ${person.name} - Grade: ${person.grade}</p>`;
+            });
+        }
+
+        function displayResults() {
+
+            let highest = persons[0]
+            let lowest = persons[0]
+
+            for (const person of persons) {
+                if (person.grade > highest.grade){
+                    highest = person;
+                }
+                if (person.grade < lowest.grade){
+                    lowest = person;
+                }
+            }
+
+            const output = `
+            <p>Person with the highest grade:</p>
+                <p>Name: ${highest.name} - Grade: (${highest.grade})</p>
+                <br>
+                <p>Person with the lowest grade:</p>
+                <p>Name: ${lowest.name} - Grade: (${lowest.grade})</p>
+            `;
+
+            document.getElementById("output").innerHTML = output;
+
+            // Optionally reset the form for new entries
+            document.getElementById("personForm").reset();
+            persons.length = 0; // Clear the persons array
+        }
+
+
+    </script>
+</body>
+</html>

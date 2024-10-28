@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 - EX CF FN OBJ ARR</title>
+    <link rel="stylesheet" href="css/week6.css">
+</head>
+<body>
+<!-- 
+    <script>
+        function helloWorld()
+        {
+            document.write("Hello World! <br>")
+        }
+
+        helloWorld()
+
+    </script>
+
+    <script>
+        let fn;
+
+        function customMessage(fn){
+            document.write(" Hello " + fn + "!<br>")
+        }
+
+        customMessage("Alex");
+        customMessage("John");
+    </script>
+
+    <script>
+        function sum(x,y){
+            return (x+y);
+        }
+        document.write("2+3 =" + sum(2,3) + "<br>")
+    </script>
+
+    <script>
+        let fruits2= ["Apple", "Orange", "Banana", "Pineapple"];
+
+        document.write(fruits2[3])
+
+    </script>
+
+    <script>
+        for(let i=0; i<fruits2.length; i++) {
+
+            document.write("<br>" + fruits2[i] + "<br>")
+        }
+    </script> -->
+
+    <!-- <script>
+
+
+            // function Person(){
+
+            //     this.firstname = "John",
+            //     this.lastname = "Wick",
+        
+
+            //     this.shoperson = function ()
+            //      {
+            //         document.write(this.firstname + " " + this.lastname + "<br>");
+
+            //     };
+            // }
+
+            // function Person(fn, ls)
+            // {
+
+            //    this.firstname = fn,
+            //    this.lastname = ls,
+
+
+            //      this.showperson = function ()
+            //         {
+            //                  document.write(this.firstname + " " + this.lastname + "<br>");
+
+            //         };
+            // }
+            
+            class Person {
+        constructor(fn, ls) {
+        this.firstname = fn;
+        this.lastname = ls;
+    }
+
+    showperson() {
+        document.write(this.firstname + " " + this.lastname + "<br>");
+    }
+}
+
+
+            let student1 = new Person("Alex", "Wick");
+            let student2 = new Person("Jene", "Green");
+
+            document.write(student1.firstname + "<br>");
+            student1.showperson();
+            student2.showperson();
+          
+ 
+            
+
+            // Initializing multiple objects
+            const students = [
+                    new Person("Alice", "Johnson"),
+                    new Person("Bob", "Smith"),
+                    new Person("Charlie", "Brown"),
+                ];
+
+                // Displaying the names of all students
+                for (let i=0; i<students.length; i++) {
+                    students[i].showperson(); // Output each student's name
+                }
+          
+    </script> -->
+
+    <!-- <script>
+        
+
+        let str = "HELLO world!";
+
+document.write(str + "<br>");
+document.write("Length = " + str.length + "<br>");
+document.write("To Uppercase = " + str.toUpperCase () + "<br>");
+document.write("To Uppercase = " + str.replace ("world", "everyone") + "<br>");
+
+String.prototype.IsupperCase = function ()
+{
+  if (this.toString() === this.toUpperCase())
+  {
+    return true;
+  } else
+  {
+
+    return false;
+  }
+
+};
+document.write("is this string uppercase: " + str.IsupperCase() + "!")
+ -->
+
+<!-- 
+    </script> -->
+
+    <h1>Sorting</h1>
+
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+
+    <script>
+        
+        const fruits3 = ["Banana", "Orange", "Circle", "Doctor", "Apple", "Mobile"];
+        document.getElementById("demo1").innerHTML = fruits3.sort().reverse();
+        
+        let numbers = [2, 1, 5, 3, 4, 7, 6, 10, 9, 8];
+
+        // document.getElementById("demo2").innerHTML = numbers.sort();
+
+        document.getElementById("demo2").innerHTML = numbers.sort(function (a, b) {
+
+            return b - a;  // if  > 0,   b comes first
+                          //if  < 0 ,  a comes first
+                         // if returns 0 nothing happens 
+        });
+    
+
+        document.getElementById("demo3").innerHTML = numbers.sort( function(a,b)
+        {
+        return a-b; 
+         });
+
+        // numbers.sort((a, b) => a - b);
+        // document.getElementById("demo3").innerHTML = numbers;
+
+        
+
+        let products = [
+            {
+                name: 'Iphone 15',
+                price: 1000
+            },
+            {
+                name: 'Pixel Pro 8',
+                price: 1200
+            },
+            {
+                name: 'S23',
+                price: 1100
+            }
+        ];
+
+        // products.sort((a, b) => a.price - b.price);
+
+products.sort(function (a,b){
+    return b.price - a.price;
+});
+
+
+        for (i = 0; i < 3; i++) {
+
+            document.write(products[i].name + ": " + products[i].price + "<br>");
+        }
+
+    
+
+       
+
+    </script>
+
+    <script>
+        
+        function displayResults() {
+            // Find highest and lowest grade
+            let highest = persons[0];
+            let lowest = persons[0];
+
+            for (const person of persons) {
+                if (person.grade > highest.grade) {
+                    highest = person;
+                }
+                if (person.grade < lowest.grade) {
+                    lowest = person;
+                }
+            }
+
+            // Display the results
+            const output = `
+                <p>Person with the highest grade:</p>
+                <p>Name: ${highest.name} - Grade: (${highest.grade})</p>
+                <br>
+                <p>Person with the lowest grade:</p>
+                <p>Name: ${lowest.name} - Grade: (${lowest.grade})</p>
+            `;
+
+            document.getElementById("output").innerHTML = output;
+
+            // Optionally reset the form for new entries
+            document.getElementById("personForm").reset();
+            persons.length = 0; // Clear the persons array
+        }
+
+    </script>
+
+    
+    
+</body>
+</html>
