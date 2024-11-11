@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+    <link rel="stylesheet" href="css/week8.css">
+</head>
+<body>
+
+    <!-- 
+        <p>Ben Spiers</p>
+        <p>Student Number: 01740770 </p> 
+    -->
+    <h1> Quiz </h1>
+    <!-- Question 1 -->
+    <div class="question">
+        <p>1. What is the capital of France?</p>
+        <input type="radio" name="question1" value="Paris"> Paris <br>
+        <input type="radio" name="question1" value="London"> London <br>
+        <input type="radio" name="question1" value="Rome"> Rome <br>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <p>2. Which planet is known as the Red Planet?</p>
+        <input type="radio" name="question2" value="Saturn"> Saturn <br>
+        <input type="radio" name="question2" value="Mars"> Mars <br>
+        <input type="radio" name="question2" value="Jupiter"> Jupiter <br>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <p>3. What is the largest mammal in the world?</p>
+        <input type="radio" name="question3" value="Giraffe"> Giraffe <br>
+        <input type="radio" name="question3" value="Elephant"> Elephant <br>
+        <input type="radio" name="question3" value="Blue Whale"> Blue Whale <br>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+        <p>4. Which element has the chemical symbol 'O'?</p>
+        <input type="radio" name="question4" value="Gold"> Gold <br>
+        <input type="radio" name="question4" value="Oxygen"> Oxygen <br>
+        <input type="radio" name="question4" value="Osmium"> Osmium <br>
+    </div>
+
+
+    <button onclick="calculateScore()">Submit Quiz</button>
+    
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateScore() {
+            //starting score of 0
+            let score = 0;
+
+            // Answers
+            const answers = {
+                question1: "Paris",
+                question2: "Mars",
+                question3: "Blue Whale",
+                question4: "Oxygen"
+            };
+
+            // Check answers
+            const userAnswer1 = document.querySelector('input[name="question1"]:checked');
+            const userAnswer2 = document.querySelector('input[name="question2"]:checked');
+            const userAnswer3 = document.querySelector('input[name="question3"]:checked');
+            const userAnswer4 = document.querySelector('input[name="question4"]:checked');
+
+            //if users answer matches correct answer then increment score by 1
+            if (userAnswer1 && userAnswer1.value === answers.question1) {
+                score++;
+            }
+            if (userAnswer2 && userAnswer2.value === answers.question2) {
+                score++;
+            }
+            if (userAnswer3 && userAnswer3.value === answers.question3) {
+                score++;
+            }
+            if (userAnswer4 && userAnswer4.value === answers.question4) {
+                score++;
+            }
+
+            // Total questions, getting total of quesions (length)
+            const totalQuestions = Object.keys(answers).length;
+
+            // Display result
+            const resultDiv = document.getElementById("result");
+            //if score is equal to the amount of questions display full marks
+            if (score === totalQuestions) {
+                resultDiv.innerHTML = `Excellent! You scored ${score}/${totalQuestions}.`;
+                //if score is equal to the amount of questions -2 then display 3/4 or 2/4
+            } else if (score === totalQuestions - 2) {
+                resultDiv.innerHTML = `Good job! You scored ${score}/${totalQuestions}.`;
+
+                //if score is equal to 1 - display 0/4 or 1/4
+            } else {
+                resultDiv.innerHTML = `You scored ${score}/${totalQuestions}. Keep practicing!`;
+            }
+        }
+    </script>
+
+</body>
+</html>
