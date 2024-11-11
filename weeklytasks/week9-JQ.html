@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Planner</title>
+    <link rel="stylesheet" href="css/week9.css">
+
+</head>
+<body>
+
+    <br>
+        <a href="/index.html" class="underline">Click here to go to weekly tasks / home</a>
+
+    <h1>Task Planner</h1>
+
+    <!-- Task Input Form -->
+    <div>
+        <input type="text" id="taskname" placeholder="Task Name">
+        <select id="taskpriority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <input type="date" id="taskdue">
+        <button id="addtask">Add Task</button>
+    </div>
+
+    <!-- Task List and Controls -->
+    <div>
+        <button id="sortpriority">Sort by Priority</button>
+        <button id="sortdue">Sort by Due Date</button>
+        <button id="removecomp">Remove Completed</button>
+        <ul id="tasklist"></ul>
+    </div>
+
+    <!-- jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let tasks = [];
+
+            // Add Task
+            $('#addtask').click(function() {
+                const taskName = $('#taskname').val();
+                const taskPriority = $('#taskpriority').val();
+                const taskDueDate = $('#taskdue').val();
+
+                if (taskName && taskDueDate) {
+                    tasks.push({
+                        name: taskName,
+                        priority: taskPriority,
+                        dueDate: new Date(taskDueDate),
+                        completed: false
+                    });
+                    renderTasks();
+                }
+            });
+
+            // Render Tasks
+            function renderTasks() {
+                $('#tasklist').empty();
+                tasks.forEach((task, index) => {
+                    const taskClass = task.completed ? 'completed' : '';
+                    let priorityClass = '';
+                    let priorityLabel = '';
+
+                    // Set priority styles and labels
+                    if (task.priority === 'High') {
+                        priorityClass = 'highpriority';
+                        priorityLabel = 'High';
+                    } else if (task.priority === 'Medium') {
+                        priorityClass = 'mediumpriority';
+                        priorityLabel = 'Medium';
+                    } else if (task.priority === 'Low') {
+                        priorityClass = 'lowpriority';
+                        priorityLabel = 'Low';
+                    }
+
+                    const taskHtml = `
+                        <li data-index="${index}" class="${taskClass}">
+                            <input type="checkbox" class="complete-task" ${task.completed ? 'checked' : ''}>
+                            <span>${task.name} - 
+                                <span class="priority-label ${priorityClass}">${priorityLabel}</span> - 
+                                ${task.dueDate.toDateString()}
+                            </span>
+                        </li>
+                    `;
+                    $('#tasklist').append(taskHtml);
+                });
+            }
+
+            // Mark Task as Completed
+            $(document).on('change', '.complete-task', function() {
+                const index = $(this).closest('li').data('index');
+                tasks[index].completed = $(this).is(':checked');
+                renderTasks();
+            });
+
+            // Sort by Priority
+            $('#sortpriority').click(function() {
+                const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+                tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+                renderTasks();
+            });
+
+            // Sort by Due Date
+            $('#sortdue').click(function() {
+                tasks.sort((a, b) => a.dueDate - b.dueDate);
+                renderTasks();
+            });
+
+            // Remove Completed Tasks
+            $('#removecomp').click(function() {
+                tasks = tasks.filter(task => !task.completed);
+                renderTasks();
+            });
+        });
+    </script>
+    
+</body>
+</html>

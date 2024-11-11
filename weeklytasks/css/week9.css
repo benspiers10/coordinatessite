@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px;
+    text-align: left;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.priority-label {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+.highpriority {
+    background-color: red;
+}
+.mediumpriority {
+    background-color: orange;
+}
+.lowpriority {
+    background-color: green;
+}
